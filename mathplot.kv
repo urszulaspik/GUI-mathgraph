@@ -1,0 +1,224 @@
+#:kivy 1.0.9
+
+<Button>
+    background_color: 1, 170/255, 0
+    background_normal: ""
+    font_size: 18
+    
+<TextInput>
+    multiline: False
+
+<MathPlot>
+    GridLayout:
+        size: root.width, root.height
+        padding: 25
+        spacing: 25
+        cols: 2
+
+        GridLayout:
+            size_hint_x: 0.7
+            cols: 1
+            spacing: 10
+            Label:
+                size_hint_y: 0.05
+                text: "Type the formulas:"
+                font_size: 20
+                color: 1, 170/255, 0
+
+            TextInput:
+                size_hint_y: 0.1
+                id: formula
+                font_size: 20
+
+            BoxLayout:
+                size_hint_y: 0.8
+                canvas.before:
+                    Color:
+                        rgb: 1, 1, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                id:layout
+
+            Label:
+                size_hint_y: 0.05
+                id: errors
+                text: ""
+                color: 1, 0, 0
+                font_size: 20
+
+        GridLayout:
+            size_hint_x: 0.3
+            cols: 1
+            spacing: 20
+
+            GridLayout:
+                cols: 1
+                spacing: 1
+                size_hint_y: 0.35
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    spacing: 1
+
+                    Button:
+                        text: "+"
+                        on_press: root.formula_add("+")
+                
+                    Button:
+                        text: "-"
+                        on_press: root.formula_add("-")
+
+                    Button:
+                        text: "*"
+                        on_press: root.formula_add("*")
+
+                    Button:
+                        text: "/"
+                        on_press: root.formula_add("/")
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    spacing: 1
+
+                    Button:
+                        text: "^"
+                        on_press: root.formula_add("^")
+                    
+                    Button:
+                        text: "sqrt"
+                        on_press: root.formula_add("sqrt()")
+
+                    Button:
+                        text: "("
+                        on_press: root.formula_add("(")
+
+                    Button:
+                        text: ")"
+                        on_press: root.formula_add(")")
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    spacing: 1
+
+                    Button:
+                        text: "."
+                        on_press: root.formula_add(".")
+                    
+                    Button:
+                        text: "e"
+                        on_press: root.formula_add("e")
+
+                    Button:
+                        text: "pi"
+                        on_press: root.formula_add("pi")
+
+                    Button:
+                        text: "ln"
+                        on_press: root.formula_add("ln()")
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    spacing: 1
+
+                    Button:
+                        text: "sin"
+                        on_press: root.formula_add("sin()")
+                        background_normal: ""
+                    
+                    Button:
+                        text: "cos"
+                        on_press: root.formula_add("cos()")
+
+                    Button:
+                        text: "tan"
+                        on_press: root.formula_add("tan()")
+
+                    Button:
+                        text: "x"
+                        on_press: root.formula_add("x")
+            
+            GridLayout:
+                cols: 1
+                spacing: 1
+                size_hint_y: 0.45
+                GridLayout:
+                    cols: 2
+                    spacing: 5
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        spacing: 1
+
+                        Label:
+                            text: "Limes for axis X"
+                    
+                        Label:
+                            text: "Limes for axis Y"
+
+                        Label:
+                            text: "Title"
+
+                        Label:
+                            text: "Title for axis X"
+
+                        Label:
+                            text: "Title for axis Y"
+
+                        Label:
+                            text: "Legend"
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        spacing: 1
+                        
+                        GridLayout:
+                            cols: 2
+                            spacing: 1
+                            TextInput:
+                                text: ""
+                                id: limx_min
+                            TextInput:
+                                text: ""
+                                id: limx_max
+
+                        GridLayout:
+                            cols: 2
+                            spacing: 1
+                            TextInput:
+                                text: ""
+                                id: limy_min
+                            TextInput:
+                                text: ""
+                                id: limy_max
+
+                        TextInput:
+                            text: ""
+                            id: title
+
+                        TextInput:
+                            text: ""
+                            id: x_title
+                        
+                        TextInput:
+                            text: ""
+                            id: y_title
+
+                        CheckBox:
+                            id: legend
+                            color: 1, 170/255, 0
+        
+            BoxLayout:
+                orientation: "vertical"
+                spacing: 2
+                size_hint_y: 0.2
+
+                Button:
+                    text: "Draw"
+                    on_press: root.plot_graph()
+
+                Button:
+                    text: "Exit"
+                    on_press: root.quit()
+
+                
