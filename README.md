@@ -5,6 +5,7 @@
 ## Technologies
 * Python - version 3.8.8
 * matplotlib - version 3.1.3
+* Kivy
 
 ## Example image
 
